@@ -1,10 +1,23 @@
 function ToolCard({ tool, onAddToStack, isAdded }) {
+  // src/assets/ ফোল্ডার থেকে ডাইনামিক ইমেজ লোড করার নিয়ম
+  const iconSrc = new URL(`../assets/${tool.icon}`, import.meta.url).href;
+
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+    <div
+      className={`rounded-2xl p-5 border transition duration-200 flex flex-col justify-between ${
+        isAdded
+          ? "bg-pink-50/20 border-pink-400 ring-1 ring-pink-400 shadow-sm"
+          : "bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-pink-300"
+      }`}
+    >
       <div>
-        {/* Top Header: Icon, Badge, Difficulty */}
+        {/* Top Header: Icon, Badge */}
         <div className="flex items-start justify-between mb-3">
-          <img src={tool.icon} alt={tool.name} className="w-10 h-10 object-contain" />
+          <img
+            src={iconSrc}
+            alt={tool.name}
+            className="w-10 h-10 object-contain"
+          />
           <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-pink-50 text-[#B341C3]">
             {tool.badge}
           </span>
@@ -12,7 +25,9 @@ function ToolCard({ tool, onAddToStack, isAdded }) {
 
         {/* Name & Category */}
         <h3 className="text-lg font-bold text-gray-800">{tool.name}</h3>
-        <p className="text-xs font-semibold text-gray-400 mt-0.5">{tool.category}</p>
+        <p className="text-xs font-semibold text-gray-400 mt-0.5">
+          {tool.category}
+        </p>
 
         {/* Description */}
         <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
@@ -37,7 +52,7 @@ function ToolCard({ tool, onAddToStack, isAdded }) {
           disabled={isAdded}
           className={`w-full py-2 rounded-lg text-xs font-semibold transition ${
             isAdded
-              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+              ? "bg-pink-50 text-pink-600 cursor-default"
               : "bg-gray-900 text-white hover:bg-black shadow-sm"
           }`}
         >
