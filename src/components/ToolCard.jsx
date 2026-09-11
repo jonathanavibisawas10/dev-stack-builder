@@ -1,5 +1,5 @@
 function ToolCard({ tool, onAddToStack, isAdded }) {
-  // public ফোল্ডারের SVG ফাইলের সরাসরি পাথ তৈরি
+
   const iconSrc = tool.icon?.startsWith("/") ? tool.icon : `/${tool.icon}`;
 
   return (
