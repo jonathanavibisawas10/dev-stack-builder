@@ -9,6 +9,7 @@ function SelectedStack({ selectedStack, onRemove, onRemoveAll }) {
         </span>
       </div>
 
+      
       {/* Selected Items List */}
       {selectedStack.length === 0 ? (
         <div className="py-12 text-center text-gray-400">
