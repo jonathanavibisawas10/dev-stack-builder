@@ -1,6 +1,6 @@
 function ToolCard({ tool, onAddToStack, isAdded }) {
-  // src/assets/ ফোল্ডার থেকে ডাইনামিক ইমেজ লোড করার নিয়ম
-  const iconSrc = new URL(`../assets/${tool.icon}`, import.meta.url).href;
+  // public ফোল্ডারের SVG ফাইলের সরাসরি পাথ তৈরি
+  const iconSrc = tool.icon?.startsWith("/") ? tool.icon : `/${tool.icon}`;
 
   return (
     <div
